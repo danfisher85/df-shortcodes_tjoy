@@ -277,7 +277,7 @@ if (!function_exists('cta_shortcode')) {
 		}
 
 	    
-		$output =  '<div class="cta cta__'.$color.' cta__'.$orient.' '.$fullwidth.'" '.$cta_bg.'>';
+		$output =  '<div class="parallax-bg cta cta__'.$color.' cta__'.$orient.' '.$fullwidth.'" '.$cta_bg.'>';
 			$output .= '<div class="cta-inner">';
 				$output .= '<div class="cta-txt-wrap '.$cta_txt.'">';
 					$output .= '<div class="cta-txt">';
@@ -295,7 +295,7 @@ if (!function_exists('cta_shortcode')) {
 			$output .= '</div>';
 		$output .= '</div>';
 
-	   return $output;
+	  return $output;
 
 	}
 	add_shortcode('cta', 'cta_shortcode');
@@ -489,7 +489,9 @@ if (!function_exists('listitem_shortcode')) {
 			if($title != '') {
 				$output .= '<h4 class="bold">'.$title.'</h4>';
 			}
-			$output .= do_shortcode($content);
+			$output .= '<div class="list-desc">';
+				$output .= do_shortcode($content);
+			$output .= '</div>';
 		$output .= '</li>';
 
 		return $output;
@@ -618,6 +620,9 @@ if (!function_exists('carousel_shortcode')) {
 												$output .= get_the_title($post->ID);
 											$output .= '</span>';
 										$output .= '</h3>';
+										$output .= '<span class="date">';
+											$output .= get_the_time(get_option('date_format'));
+										$output .= '</span>';
 									$output .= '</div>';
 								$output .= '</div>';
 							$output .= '</figure>';
@@ -635,6 +640,9 @@ if (!function_exists('carousel_shortcode')) {
 												$output .= get_the_title($post->ID);
 											$output .= '</span>';
 										$output .= '</h3>';
+										$output .= '<span class="date">';
+											$output .= get_the_time(get_option('date_format'));
+										$output .= '</span>';
 									$output .= '</div>';
 								$output .= '</div>';
 							$output .= '</figure>';
@@ -754,6 +762,9 @@ if (!function_exists('shortcode_portfolio')) {
 												$output .= get_the_title($post->ID);
 											$output .= '</span>';
 										$output .= '</h3>';
+										$output .= '<span class="date">';
+											$output .= get_the_time(get_option('date_format'));
+										$output .= '</span>';
 									$output .= '</div>';
 								$output .= '</div>';
 							$output .= '</figure>';
