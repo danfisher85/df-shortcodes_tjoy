@@ -1035,6 +1035,74 @@ $zilla_shortcodes['counter'] = array(
 		)
 	),
 	'shortcode' => '[counter type="{{type}}" num="{{num}}"] {{content}} [/counter]',
+	'popup_title' => __('Insert Counter Shortcode', 'tjoy')
+);
+
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	Circled Counter
+/*-----------------------------------------------------------------------------------*/
+
+$zilla_shortcodes['circle_counter'] = array(
+	'no_preview' => true,
+	'params' => array(
+		'dimension' => array(
+			'std' => '190',
+			'type' => 'text',
+			'label' => __('dimension', 'tjoy'),
+			'desc' => __('Description.', 'tjoy'),
+		),
+		'text' => array(
+			'std' => '32%',
+			'type' => 'text',
+			'label' => __('dimension', 'tjoy'),
+			'desc' => __('Description.', 'tjoy'),
+		),
+		'info' => array(
+			'std' => 'Your Info',
+			'type' => 'text',
+			'label' => __('dimension', 'tjoy'),
+			'desc' => __('Description.', 'tjoy'),
+		),
+		'width' => array(
+			'std' => '30',
+			'type' => 'text',
+			'label' => __('dimension', 'tjoy'),
+			'desc' => __('Description.', 'tjoy'),
+		),
+		'fontsize' => array(
+			'std' => '28',
+			'type' => 'text',
+			'label' => __('dimension', 'tjoy'),
+			'desc' => __('Description.', 'tjoy'),
+		),
+		'percent' => array(
+			'std' => '32',
+			'type' => 'text',
+			'label' => __('dimension', 'tjoy'),
+			'desc' => __('Description.', 'tjoy'),
+		),
+		'fgcolor' => array(
+			'std' => '#13aad3',
+			'type' => 'text',
+			'label' => __('dimension', 'tjoy'),
+			'desc' => __('Description.', 'tjoy'),
+		),
+		'bgcolor' => array(
+			'std' => 'transparent',
+			'type' => 'text',
+			'label' => __('dimension', 'tjoy'),
+			'desc' => __('Description.', 'tjoy'),
+		),
+		'icon' => array(
+			'type' => 'select',
+			'label' => __('Icon', 'tjoy'),
+			'desc' => __('Select the icon', 'tjoy'),
+			'options' => $fontawesome_icons
+		),
+	),
+	'shortcode' => '[circle_counter dimension="{{dimension}}" text="{{text}}" info="{{info}}" width="{{width}}" fontsize="{{fontsize}}" percent="{{percent}}" fgcolor="{{fgcolor}}" bgcolor="{{bgcolor}}" icon="{{icon}}" /]',
 	'popup_title' => __('Insert Posts Shortcode', 'tjoy')
 );
 
@@ -2028,6 +2096,12 @@ $zilla_shortcodes['progress'] = array(
 				'success' => 'Success'
 			)
 		),
+		'label' => array(
+			'std' => 'Value Name',
+			'type' => 'text',
+			'label' => __('Value Name', 'tjoy'),
+			'desc' => __('Add the value of the name.', 'tjoy'),
+		),
 		'progress' => array(
 			'std' => '40',
 			'type' => 'text',
@@ -2035,7 +2109,7 @@ $zilla_shortcodes['progress'] = array(
 			'desc' => __('Add the value of the progress (min 0, max 100)', 'tjoy'),
 		)
 	),
-	'shortcode' => '[progress type="{{type}}" color="{{color}}" progress="{{progress}}"]',
+	'shortcode' => '[progress type="{{type}}" color="{{color}}" label="{{label}}" progress="{{progress}}"]',
 	'popup_title' => __('Insert Progress Bar Shortcode', 'tjoy')
 );
 

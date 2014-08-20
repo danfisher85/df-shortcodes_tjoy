@@ -43,6 +43,9 @@
 						{text: 'Counter',onclick:function(){
 							editor.execCommand("zillaPopup", false, {title: 'Counter',identifier: 'counter'})
 						}},
+						{text: 'Circled Counter',onclick:function(){
+							editor.execCommand("zillaPopup", false, {title: 'Circled Counter',identifier: 'circle_counter'})
+						}},
 						{text: 'Tabs',onclick:function(){
 							editor.execCommand("zillaPopup", false, {title: 'Tabs',identifier: 'tabs'})
 						}},

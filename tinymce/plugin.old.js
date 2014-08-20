@@ -49,6 +49,7 @@
 					a.addWithPopup( b, "Video in iPad", "video_in_iPad" );
 					a.addWithPopup( b, "Call to Action", "cta" );
 					a.addWithPopup( b, "Counter", "counter" );
+					a.addWithPopup( b, "Circled Counter", "circle_counter" );
 					a.addWithPopup( b, "Tabs", "tabs" );
 					a.addWithPopup( b, "Carousel", "carousel" );
 					a.addWithPopup( b, "Partners", "partners" );

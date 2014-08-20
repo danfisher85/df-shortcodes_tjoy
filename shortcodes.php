@@ -278,19 +278,21 @@ if (!function_exists('cta_shortcode')) {
 
 	    
 		$output =  '<div class="parallax-bg cta cta__'.$color.' cta__'.$orient.' '.$fullwidth.'" '.$cta_bg.'>';
-			$output .= '<div class="cta-inner">';
-				$output .= '<div class="cta-txt-wrap '.$cta_txt.'">';
-					$output .= '<div class="cta-txt">';
-						$output .= $title;
+			$output .= '<div class="cta-outer">';
+				$output .= '<div class="cta-inner">';
+					$output .= '<div class="cta-txt-wrap '.$cta_txt.'">';
+						$output .= '<div class="cta-txt">';
+							$output .= $title;
+						$output .= '</div>';
+						$output .= '<div class="cta-subtitle">';
+							$output .= $subtitle;
+						$output .= '</div>';
 					$output .= '</div>';
-					$output .= '<div class="cta-subtitle">';
-						$output .= $subtitle;
+					$output .= '<div class="cta-btn '.$cta_btn.'">';
+						$output .= '<a href="'.$btn_url.'" class="btn btn-'.$btn_class.'">';
+							$output .= $btn_txt;
+						$output .= '</a>';
 					$output .= '</div>';
-				$output .= '</div>';
-				$output .= '<div class="cta-btn '.$cta_btn.'">';
-					$output .= '<a href="'.$btn_url.'" class="btn btn-lg btn-'.$btn_class.'">';
-						$output .= $btn_txt;
-					$output .= '</a>';
 				$output .= '</div>';
 			$output .= '</div>';
 		$output .= '</div>';
@@ -416,24 +418,17 @@ if (!function_exists('icobox_shortcode')) {
 				$output .= '<div class="icobox-desc-inner1">';
 					$output .= '<div class="icobox-desc-inner2">';
 						if($title != '') {
-							if($url != '') {
-								$output .= '<h3><a href="'.$url.'">';
-									$output .= $title;
-								$output .= '</a></h3>';
-							} else {
-								$output .= '<h3>';
-									$output .= $title;
-								$output .= '</h3>';
-							}
+							$output .= '<h3>';
+								$output .= $title;
+							$output .= '</h3>';
 						}
 						$output .= '<p>';
 							$output .= $desc;
 						$output .= '</p>';
 						if($btn_txt != '') {
-							if($color == 'tertiary') {
-								$color = 'success';
-							}
-							$output .= '<a href="'.$url.'" class="btn btn-'.$color.'">'.$btn_txt.'</a>';
+							$output .= '<div class="text-right">';
+								$output .= '<a href="'.$url.'" class="link-arrow">'.$btn_txt.' <i class="fa fa-arrow-circle-o-right"></i></a>';
+							$output .= '</div>';
 						}
 					$output .= '</div>';
 				$output .= '</div>';
@@ -572,7 +567,7 @@ if (!function_exists('carousel_shortcode')) {
 				$output .= '<a class="next-btn" id="carousel-random-'.$unique_id.'-next"><i class="fa fa-angle-right"></i></a>';
 			$output .= '</div>';
 
-			$output .= '<div class="owl-wrapper"><div id="carousel-random-'.$unique_id.'" class="owl-carousel gallery-list">';
+			$output .= '<div class="owl-holder"><div id="carousel-random-'.$unique_id.'" class="owl-carousel gallery-list">';
 
 			global $post;
 			
@@ -900,6 +895,7 @@ if (!function_exists('bar_shortcode')) {
 			array(
 				'progress' => '30',
 				'type' => '',
+				'label' => '',
 				'color' => ''
 		), $atts));
 
@@ -911,7 +907,8 @@ if (!function_exists('bar_shortcode')) {
 
 		$output = '<div class="progress '.$type.'">';
 			$output .= '<div class="progress-bar progress-bar-'.$color.'" role="progressbar" aria-valuenow="'.$progress.'" aria-valuemin="0" aria-valuemax="100" style="width: '.$progress.'%;">';
-				$output .= '<span class="sr-only">'.$progress.'% Complete</span>';
+				$output .= '<span class="progress-title">'.$label.'</span>';
+				$output .= '<span class="progress-counter">'.$progress.'%</span>';
 			$output .= '</div>';
 		$output .= '</div>';
 
@@ -1011,7 +1008,7 @@ if (!function_exists('testi_shortcode1')) {
 	   ), $atts));
 	    
 		$output =  '<div class="testimonial testimonial__style1">';
-			$output .= '<figure class="thumbnail">';
+			$output .= '<figure class="testimonial-thumb">';
 				$output .= '<img src="'.$img_url.'" alt="">';
 			$output .= '</figure>';
 			$output .= '<h3 class="name">';
@@ -1020,8 +1017,13 @@ if (!function_exists('testi_shortcode1')) {
 			$output .= '<span class="info">';
 				$output .= $info;
 			$output .= '</span>';
+			$output .= '<div class="clearfix"></div>';
 			$output .= '<div class="testimonial-txt">';
-				$output .= do_shortcode($content);
+				$output .= '<div class="testimonial-txt-inner1">';
+					$output .= '<div class="testimonial-txt-inner2">';
+						$output .= do_shortcode($content);
+					$output .= '</div>';
+				$output .= '</div>';
 			$output .= '</div>';
 		$output .= '</div>';
 
@@ -1050,9 +1052,9 @@ if (!function_exists('testi_shortcode2')) {
 				$output .= do_shortcode($content);
 			$output .= '</div>';
 			$output .= '<div class="testimonial-info">';
-				$output .= '<h3 class="name">';
+				$output .= '<h4 class="name">';
 					$output .= $name;
-				$output .= '</h3>';
+				$output .= '</h4>';
 				$output .= '<span class="info">';
 					$output .= $info;
 				$output .= '</span>';
@@ -1084,9 +1086,9 @@ if (!function_exists('testi_shortcode3')) {
 				$output .= do_shortcode($content);
 			$output .= '</div>';
 			$output .= '<div class="testimonial-info">';
-				$output .= '<h3 class="name">';
+				$output .= '<h4 class="name">';
 					$output .= $name;
-				$output .= '</h3>';
+				$output .= '</h4>';
 				$output .= '<span class="info">';
 					$output .= $info;
 				$output .= '</span>';
@@ -1137,6 +1139,45 @@ if (!function_exists('counter')) {
 
 	}
 	add_shortcode('counter', 'counter');
+}
+
+
+/*-----------------------------------------------------------------------------------*/
+/*	Circled Counter
+/*-----------------------------------------------------------------------------------*/
+if (!function_exists('circle_counter')) {
+	function circle_counter($atts, $content = null) {
+		extract(shortcode_atts(
+			array(
+				'dimension' => '190',
+				'text'      => '32%',
+				'info'      => 'Your info',
+				'width'     => '30',
+				'fontsize'  => '28',
+				'percent'   => '32',
+				'fgcolor'   => '#13aad3',
+				'bgcolor'   => '#eee',
+				'icon'      => 'fa-task'
+	   ), $atts));
+
+		$unique_id = rand();
+
+		$output =  '<div id="circled-counter__'.$unique_id.'" class="circled-counter" ';
+			$output .= 'data-dimension="'.$dimension.'" ';
+			$output .= 'data-text="'.$text.'" ';
+			$output .= 'data-info="'.$info.'" ';
+			$output .= 'data-width="'.$width.'" ';
+			$output .= 'data-fontsize="'.$fontsize.'" ';
+			$output .= 'data-percent="'.$percent.'" ';
+			$output .= 'data-fgcolor="'.$fgcolor.'" ';
+			$output .= 'data-bgcolor="'.$bgcolor.'" ';
+			$output .= 'data-icon="'.$icon.'">';
+		$output .= '</div>';
+
+	  return $output;
+
+	}
+	add_shortcode('circle_counter', 'circle_counter');
 }
 
 
@@ -1392,9 +1433,11 @@ if (!function_exists('title_shortcode')) {
 		}
 
 		$output = '<div class="'.$style.'">';
-			$output .= '<h2>';
-				$output .= do_shortcode($content);
-			$output .= '</h2>';
+			$output .= '<div class="title-inner">';
+				$output .= '<h2>';
+					$output .= do_shortcode($content);
+				$output .= '</h2>';
+			$output .= '</div>';
 		$output .= '</div>';
 
 		return $output;
