@@ -273,7 +273,7 @@ if (!function_exists('cta_shortcode')) {
 		}
 
 		if($custom_bg_url != '') {
-			$cta_bg = 'style="background-image:url('.$custom_bg_url.');"';
+			$cta_bg = 'style="background-image:url('.$custom_bg_url.');" data-stellar-background-ratio="0.2"';
 		}
 
 	    
