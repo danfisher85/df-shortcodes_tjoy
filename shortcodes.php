@@ -134,10 +134,16 @@ if (!function_exists('shortcode_recent_posts')) {
 		extract(shortcode_atts(array(										 
 				'num' => '5',
 				'words_num' => '15',
-				'img_size' => 'small'
+				'img_size' => 'small',
+				'orient' => 'vertical',
+				'cols' => '3cols'
 		), $atts));
 
-		$output = '<div class="widget widget__sidebar widget_posts no-bottom-margin"><ul class="widget-posts-list">';
+		if($orient == 'horizontal') {
+			$orient = 'posts-list__horizontal';
+		}
+
+		$output = '<div class="widget widget__sidebar widget_posts no-bottom-margin '.$orient.' posts-list__'.$cols.'"><ul class="widget-posts-list">';
 
 		global $post;
 		global $tjoy_string_limit_words;
@@ -482,7 +488,7 @@ if (!function_exists('listitem_shortcode')) {
 				$output .= '<i class="fa '.$icon.'"></i>';
 			$output .= '</span>';
 			if($title != '') {
-				$output .= '<h4 class="bold">'.$title.'</h4>';
+				$output .= '<h4>'.$title.'</h4>';
 			}
 			$output .= '<div class="list-desc">';
 				$output .= do_shortcode($content);
@@ -931,6 +937,7 @@ if (!function_exists('member_shortcode')) {
 			array(
 				'name' => '',
 				'img_url' => '',
+				'page_url' => '',
 				'position' => '',
 				'facebook' => '',
 				'twitter' => '',
@@ -943,9 +950,17 @@ if (!function_exists('member_shortcode')) {
 				$output .= '<figure class="team-member-thumbnail">';
 
 					if($img_url != '' ) {
-						$output .= '<img src="'.$img_url.'" alt="" class="img-responsive">';
+						if($page_url != '') {
+							$output .= '<a href="'.$page_url.'"><img src="'.$img_url.'" alt="" class="img-responsive"></a>';
+						} else {
+							$output .= '<img src="'.$img_url.'" alt="" class="img-responsive">';
+						}
 					} else {
-						$output .= '<img src="'.get_template_directory_uri().'/images/empty.jpg" alt="" class="empty-thumb">';
+						if($page_url != '') {
+							$output .= '<a href="'.$page_url.'"><img src="'.get_template_directory_uri().'/images/empty.jpg" alt="" class="empty-thumb"></a>';
+						} else {
+							$output .= '<img src="'.get_template_directory_uri().'/images/empty.jpg" alt="" class="empty-thumb">';
+						}
 					}
 				$output .= '</figure>';
 
@@ -1481,19 +1496,24 @@ if (!function_exists('section_shortcode')) {
 }
 
 /*-----------------------------------------------------------------------------------*/
-/*	CTA Full Width Section
+/*	Section with Parallax background
 /*-----------------------------------------------------------------------------------*/
-if (!function_exists('cta_section_shortcode')) {
-	function cta_section_shortcode($atts, $content = null) {
+if (!function_exists('section_parallax_shortcode')) {
+	function section_parallax_shortcode($atts, $content = null) {
 
-		$output = '<div class="cta cta__fullw">';
+		extract(shortcode_atts(
+			array(
+				'bg_url' => ''
+		), $atts));
+
+		$output = '<div class="fullwidth-wrapper fullwidth-wrapper__parallax" style="background-image:url('.$bg_url.');" data-stellar-background-ratio="0.2">';
 		$output .= do_shortcode($content);
 		$output .= '</div>';
 
 		return $output;
 	}
 
-	add_shortcode('cta_block', 'cta_section_shortcode');
+	add_shortcode('section_parallax', 'section_parallax_shortcode');
 }
 
 

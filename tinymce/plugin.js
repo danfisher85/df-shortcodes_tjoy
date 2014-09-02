@@ -127,6 +127,9 @@
 						{text: 'Section',onclick:function(){
 							editor.execCommand("zillaPopup", false, {title: 'Section',identifier: 'section'})
 						}},
+						{text: 'Section with parallax',onclick:function(){
+							editor.execCommand("zillaPopup", false, {title: 'Section with parallax',identifier: 'section_parallax'})
+						}},
 						{text: 'Spacers',onclick:function(){
 							editor.execCommand("zillaPopup", false, {title: 'Spacers',identifier: 'spacer'})
 						}},

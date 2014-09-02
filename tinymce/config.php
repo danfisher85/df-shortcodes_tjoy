@@ -934,8 +934,8 @@ $zilla_shortcodes['cta'] = array(
 			'label' => __('Color', 'tjoy'),
 			'desc' => __('Select the box\'s color', 'tjoy'),
 			'options' => array(
-				'default' => 'Grey',
-				'alt' => 'White'
+				'default' => 'Lighter',
+				'alt' => 'Darker'
 			)
 		),
 		'orient' => array(
@@ -1168,8 +1168,26 @@ $zilla_shortcodes['recent_posts'] = array(
 				'portfolio-lg' => 'Large'
 			)
 		),
+		'orient' => array(
+			'type' => 'select',
+			'label' => __('Orientation', 'tjoy'),
+			'desc' => __('Choose posts orientation', 'tjoy'),
+			'options' => array(
+				'vertical' => 'Vertical',
+				'horizontal' => 'Horizontal'
+			)
+		),
+		'cols' => array(
+			'type' => 'select',
+			'label' => __('Number of columns', 'tjoy'),
+			'desc' => __('Choose number of colums. Please note, it works only with Vertical orientation', 'tjoy'),
+			'options' => array(
+				'3cols' => '3 Columns',
+				'4cols' => '4 Columns'
+			)
+		),
 	),
-	'shortcode' => '[recent_posts num="{{num}}" words_num="{{words_num}}" img_size="{{img_size}}"]',
+	'shortcode' => '[recent_posts num="{{num}}" words_num="{{words_num}}" img_size="{{img_size}}" orient="{{orient}}" cols="{{cols}}"]',
 	'popup_title' => __('Insert Posts Shortcode', 'tjoy')
 );
 
@@ -1618,6 +1636,33 @@ $zilla_shortcodes['section'] = array(
 
 
 
+/*-----------------------------------------------------------------------------------*/
+/*	Section with Parallax background
+/*-----------------------------------------------------------------------------------*/
+
+$zilla_shortcodes['section_parallax'] = array(
+	'no_preview' => true,
+	'params' => array(
+		'bg_url' => array(
+			'type' => 'text',
+			'label' => __('Image URL', 'tjoy'),
+			'desc' => __('Put url to background image.', 'tjoy'),
+			'std' => ''
+		),
+		'content' => array(
+			'std' => '',
+			'type' => 'textarea',
+			'label' => __('Content', 'tjoy'),
+			'desc' => __('Notice! Use this shortcode only with <strong>Full Width Page</strong> Template Add content here or leave empty now.', 'tjoy'),
+		)
+	),
+	'shortcode' => '[section_parallax bg_url="{{bg_url}}"] {{content}} [/section_parallax]',
+	'popup_title' => __('Insert Section Shortcode', 'tjoy')
+);
+
+
+
+
 
 /*-----------------------------------------------------------------------------------*/
 /*	Testimonial Style 1
@@ -1881,49 +1926,55 @@ $zilla_shortcodes['member'] = array(
 			'desc' => __('Member\'s Name ', 'tjoy'),
       ),
       'img_url' => array(
-			'std' => '',
-			'type' => 'text',
-			'label' => __('Image URL', 'tjoy'),
-			'desc' => __('Put url to member\'s photo (220x220 recommended), e.g. http://your_domain.com/photo.jpg', 'tjoy'),
+				'std' => '',
+				'type' => 'text',
+				'label' => __('Image URL', 'tjoy'),
+				'desc' => __('Put url to member\'s photo (220x220 is minimum recommended), e.g. http://your_domain.com/photo.jpg', 'tjoy'),
+      ),
+      'page_url' => array(
+				'std' => '',
+				'type' => 'text',
+				'label' => __('Page URL', 'tjoy'),
+				'desc' => __('Put url to member\'s page', 'tjoy'),
       ),
       'position' => array(
-			'std' => 'CEO',
-			'type' => 'text',
-			'label' => __('Position', 'tjoy'),
-			'desc' => __('Member\'s Position', 'tjoy'),
+				'std' => 'CEO',
+				'type' => 'text',
+				'label' => __('Position', 'tjoy'),
+				'desc' => __('Member\'s Position', 'tjoy'),
       ),
       'facebook' => array(
-			'std' => '',
-			'type' => 'text',
-			'label' => __('Facebook URL', 'tjoy'),
-			'desc' => __('Facebook profile link', 'tjoy'),
+				'std' => '',
+				'type' => 'text',
+				'label' => __('Facebook URL', 'tjoy'),
+				'desc' => __('Facebook profile link', 'tjoy'),
       ),
       'twitter' => array(
-			'std' => '',
-			'type' => 'text',
-			'label' => __('Twitter URL', 'tjoy'),
-			'desc' => __('Twitter profile link', 'tjoy'),
+				'std' => '',
+				'type' => 'text',
+				'label' => __('Twitter URL', 'tjoy'),
+				'desc' => __('Twitter profile link', 'tjoy'),
       ),
       'linkedin' => array(
-			'std' => '',
-			'type' => 'text',
-			'label' => __('Linkedin URL', 'tjoy'),
-			'desc' => __('Linkedin profile link', 'tjoy'),
+				'std' => '',
+				'type' => 'text',
+				'label' => __('Linkedin URL', 'tjoy'),
+				'desc' => __('Linkedin profile link', 'tjoy'),
       ),
       'google' => array(
-			'std' => '',
-			'type' => 'text',
-			'label' => __('Google+ URL', 'tjoy'),
-			'desc' => __('Google+ profile link', 'tjoy'),
+				'std' => '',
+				'type' => 'text',
+				'label' => __('Google+ URL', 'tjoy'),
+				'desc' => __('Google+ profile link', 'tjoy'),
       ),
-		'content' => array(
-			'std' => '',
-			'type' => 'textarea',
-			'label' => __('Short Info', 'tjoy'),
-			'desc' => __('Add title text here', 'tjoy'),
-		)
-	),
-	'shortcode' => '[member name="{{name}}" img_url="{{img_url}}" position="{{position}}" facebook="{{facebook}}" twitter="{{twitter}}" linkedin="{{linkedin}}" google="{{google}}"] {{content}} [/member]',
+			'content' => array(
+				'std' => '',
+				'type' => 'textarea',
+				'label' => __('Short Info', 'tjoy'),
+				'desc' => __('Add title text here', 'tjoy'),
+			)
+		),
+	'shortcode' => '[member name="{{name}}" img_url="{{img_url}}" page_url="{{page_url}}" position="{{position}}" facebook="{{facebook}}" twitter="{{twitter}}" linkedin="{{linkedin}}" google="{{google}}"] {{content}} [/member]',
 	'popup_title' => __('Insert Team Member Shortcode', 'tjoy')
 );
 

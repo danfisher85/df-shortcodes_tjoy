@@ -45,6 +45,7 @@
 					a.addWithPopup( b, "Icobox", "icobox" );
 					a.addWithPopup( b, "Box", "box" );
 					a.addWithPopup( b, "Section", "section" );
+					a.addWithPopup( b, "Section with Parallax", "section_parallax" );
 					a.addWithPopup( b, "Video in Monitor", "video_in_monitor" );
 					a.addWithPopup( b, "Video in iPad", "video_in_iPad" );
 					a.addWithPopup( b, "Call to Action", "cta" );
