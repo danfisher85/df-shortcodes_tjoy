@@ -554,10 +554,11 @@ if (!function_exists('carousel_shortcode')) {
 	function carousel_shortcode($atts, $content = null) {
 			
 			extract(shortcode_atts(array(
-				'post_type' => 'post',
+				'post_type'     => 'post',
 				'visible_items' => '4',							 
-				'num' => '4',
-				'arrow_pos' => 'Right Top'
+				'num'           => '4',
+				'arrow_pos'     => 'Right Top',
+				'links'      => 'true'
 			), $atts));
 
 
@@ -608,13 +609,21 @@ if (!function_exists('carousel_shortcode')) {
 					$output .= '<div class="item gallery-item">';
 
 						if ( has_post_thumbnail($post->ID) ){
-							$output .= '<figure class="gallery-thumb">';
-								$output .= '<div class="gallery-thumb-inner">';
-									$output .= get_the_post_thumbnail($post->ID, $thumb_size);
-									$output .= '<span class="thumbnail-caption-inner">';
-										$output .= '<a href="'.$img_url.'" class="fa fa-search fa-2x magnific-img"></a>';
-										$output .= '<a href="'.get_permalink($post->ID).'" class="fa fa-external-link fa-2x"></a>';
-									$output .= '</span>';
+							$output .= '<figure class="gallery-thumb">';	
+
+									if ( $links == "true") {
+										$output .= '<div class="gallery-thumb-inner">';
+										$output .= get_the_post_thumbnail($post->ID, $thumb_size);
+										$output .= '<span class="thumbnail-caption-inner">';
+											$output .= '<a href="'.$img_url.'" class="fa fa-search fa-2x magnific-img"></a>';
+											$output .= '<a href="'.get_permalink($post->ID).'" class="fa fa-external-link fa-2x"></a>';
+										$output .= '</span>';
+
+									} else {
+										$output .= '<a href="'.get_permalink($post->ID).'" class="gallery-thumb-inner">';
+										$output .= get_the_post_thumbnail($post->ID, $thumb_size);
+									}
+
 									$output .= '<div class="gallery-caption">';
 										$output .= '<h3>';
 											$output .= '<span class="gallery-caption-inner">';
@@ -625,7 +634,12 @@ if (!function_exists('carousel_shortcode')) {
 											$output .= get_the_time(get_option('date_format'));
 										$output .= '</span>';
 									$output .= '</div>';
-								$output .= '</div>';
+
+								if ( $links == "true") {
+									$output .= '</div>';
+								} else {
+									$output .= '</a>';
+								}
 							$output .= '</figure>';
 
 						} else {
@@ -696,8 +710,9 @@ if (!function_exists('shortcode_portfolio')) {
 			
 			extract(shortcode_atts(array(
 					'cat_slug' => '',
-					'cols' => '4',							 
-					'num' => '4'
+					'cols'     => '4',							 
+					'num'      => '4',
+					'links' => 'true'
 			), $atts));
 
 
@@ -751,12 +766,19 @@ if (!function_exists('shortcode_portfolio')) {
 
 						if ( has_post_thumbnail($post->ID) ){
 							$output .= '<figure class="gallery-thumb">';
-								$output .= '<div class="gallery-thumb-inner">';
-									$output .= get_the_post_thumbnail($post->ID, $thumb_size);
-									$output .= '<span class="thumbnail-caption-inner">';
-										$output .= '<a href="'.$img_url.'" class="fa fa-search fa-2x magnific-img"></a>';
-										$output .= '<a href="'.get_permalink($post->ID).'" class="fa fa-external-link fa-2x"></a>';
-									$output .= '</span>';
+								if ( $links == "true") {
+										$output .= '<div class="gallery-thumb-inner">';
+										$output .= get_the_post_thumbnail($post->ID, $thumb_size);
+										$output .= '<span class="thumbnail-caption-inner">';
+											$output .= '<a href="'.$img_url.'" class="fa fa-search fa-2x magnific-img"></a>';
+											$output .= '<a href="'.get_permalink($post->ID).'" class="fa fa-external-link fa-2x"></a>';
+										$output .= '</span>';
+
+									} else {
+										$output .= '<a href="'.get_permalink($post->ID).'" class="gallery-thumb-inner">';
+										$output .= get_the_post_thumbnail($post->ID, $thumb_size);
+									}
+
 									$output .= '<div class="gallery-caption">';
 										$output .= '<h3>';
 											$output .= '<span class="gallery-caption-inner">';
@@ -767,7 +789,12 @@ if (!function_exists('shortcode_portfolio')) {
 											$output .= get_the_time(get_option('date_format'));
 										$output .= '</span>';
 									$output .= '</div>';
-								$output .= '</div>';
+
+								if ( $links == "true") {
+									$output .= '</div>';
+								} else {
+									$output .= '</a>';
+								}
 							$output .= '</figure>';
 						}
 					

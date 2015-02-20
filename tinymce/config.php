@@ -1277,9 +1277,18 @@ $zilla_shortcodes['portfolio'] = array(
 				'3' => '3',
 				'4' => '4'
 			)
+		),
+		'links' => array(
+			'type' => 'select',
+			'label' => __('Links on hover', 'tjoy'),
+			'desc' => __('Enable links on hover?', 'tjoy'),
+			'options' => array(
+				'true' => 'Yes',
+				'false' => 'No'
+			)
 		)
 	),
-	'shortcode' => '[portfolio num="{{num}}" cat_slug="{{cat_slug}}" cols="{{cols}}"]',
+	'shortcode' => '[portfolio num="{{num}}" cat_slug="{{cat_slug}}" cols="{{cols}}" links="{{links}}"]',
 	'popup_title' => __('Insert Portfolio Shortcode', 'tjoy')
 );
 
@@ -2069,8 +2078,17 @@ $zilla_shortcodes['carousel'] = array(
 				'outside_left' => 'Outside Left'
 			)
 		),
+		'links' => array(
+			'type' => 'select',
+			'label' => __('Links on hover', 'tjoy'),
+			'desc' => __('Enable links on hover?', 'tjoy'),
+			'options' => array(
+				'true' => 'Yes',
+				'false' => 'No'
+			)
+		),
 	),
-	'shortcode' => '[carousel post_type="{{post_type}}" num="{{num}}" visible_items="{{visible_items}}" arrow_pos="{{arrow_pos}}"]',
+	'shortcode' => '[carousel post_type="{{post_type}}" num="{{num}}" visible_items="{{visible_items}}" arrow_pos="{{arrow_pos}}" links="{{links}}"]',
 	'popup_title' => __('Insert Carousel Shortcode', 'tjoy')
 );
 
